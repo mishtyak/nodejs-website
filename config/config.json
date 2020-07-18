@@ -1,0 +1,9 @@
+{
+  "port": 3000,
+  "mongoose": {
+    "url": "mongodb://localhost:27017/app-pwa",
+    "options": {
+      "useNewUrlParser": true
+    }
+  }
+}
