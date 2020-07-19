@@ -29,14 +29,6 @@ app.get('/', (req, res) => {
     });
 });
 
-app.get('/contacts', (req, res) => {
-    res.render('contacts', {
-        data: {
-            h1: 'Контакты',
-        }
-    });
-});
-
 app.use((req, res,) => {
     log.error(`${new Date().toLocaleString()}. Error status: 404. URL: ${req.url}`);
 
