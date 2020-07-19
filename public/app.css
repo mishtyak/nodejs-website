@@ -1,7 +1,59 @@
+html {
+    display: flex;
+    height: auto;
+    min-height: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
 body {
-    margin: 0
+    display: flex;
+    flex-basis: auto;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-height: 100%;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+}
+
+a {
+    color: red;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+.header {
+    box-shadow: 0 0 3px #000;
+    padding: 8px;
+}
+
+main {
+    flex-basis: auto;
+    flex-grow: 1;
+    flex-shrink: 1;
+    width: 100%;
 }
 
 h1 {
-    margin: 0 0 30px;
+    margin: 0 0 16px;
+}
+
+.footer {
+    box-shadow: 0 0 3px #000;
+    padding: 8px;
+}
+
+@media (hover) {
+    a:hover {
+        color: green;
+        text-decoration: none;
+    }
 }

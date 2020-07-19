@@ -1,0 +1,25 @@
+{
+  "short_name": "Nodejs website",
+  "name": "Nodejs website. PWA",
+  "description": "Тестирование работы с PWA",
+  "icons": [
+    {
+      "src": "/img/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/img/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "red",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "red",
+  "prefer_related_applications": true
+}
