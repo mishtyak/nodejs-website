@@ -21,11 +21,7 @@ server.use(serveStatic('public', {
 }));
 
 server.get('/', (req, res) => {
-    res.render('index.ejs', {
-        data: {
-            h1: 'Hello!',
-        }
-    });
+    res.end('!!!');
 });
 
 server.use((req, res,) => {
