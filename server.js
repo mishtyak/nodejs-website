@@ -2,13 +2,13 @@ const express = require('express');
 const compression = require('compression');
 const serveStatic = require('serve-static');
 const path = require('path');
-const config = require(path.resolve('config'));
-const log = require(path.resolve('libs/winston'))(module);
+const config = require('./config');
+const log = require('./libs/winston')(module);
 
 const server = express();
 
 server.engine('ejs', require('ejs-mate'));
-server.set('views', path.resolve('views'));
+server.set('views', './views');
 server.set('view engine', 'ejs');
 
 server.use(compression());
