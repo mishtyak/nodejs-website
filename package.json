@@ -1,8 +1,8 @@
 {
     "name": "nodejs-website",
     "version": "0.0.1",
-    "dependencies": {},
-    "devDependencies": {
+    "devDependencies": {},
+    "dependencies": {
         "compression": "^1.7.4",
         "ejs": "^2.6.1",
         "ejs-mate": "^3.0.0",
