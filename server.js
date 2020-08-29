@@ -5,15 +5,15 @@ const path = require('path');
 const config = require(path.resolve('config'));
 const log = require(path.resolve('libs/winston'))(module);
 
-const app = express();
+const server = express();
 
-app.engine('ejs', require('ejs-mate'));
-app.set('views', path.resolve('views'));
-app.set('view engine', 'ejs');
+server.engine('ejs', require('ejs-mate'));
+server.set('views', path.resolve('views'));
+server.set('view engine', 'ejs');
 
-app.use(compression());
+server.use(compression());
 
-app.use(serveStatic('public', {
+server.use(serveStatic('public', {
     maxAge: '1d',
     setHeaders(res, path) {
         if (serveStatic.mime.lookup(path) === 'text/html')
@@ -21,7 +21,7 @@ app.use(serveStatic('public', {
     }
 }));
 
-app.get('/', (req, res) => {
+server.get('/', (req, res) => {
     res.render('index', {
         data: {
             h1: 'Hello!',
@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
     });
 });
 
-app.use((req, res,) => {
+server.use((req, res,) => {
     log.error(`${new Date().toLocaleString()}. Error status: 404. URL: ${req.url}`);
 
     res.status(404).render('errors/404', {
@@ -39,7 +39,7 @@ app.use((req, res,) => {
     });
 });
 
-app.use((err, req, res, next) => {
+server.use((err, req, res, next) => {
     if (res.headersSent)
         return next(err);
 
@@ -48,6 +48,6 @@ app.use((err, req, res, next) => {
     res.status(err.status || 500).render('errors/500', {err});
 });
 
-app.listen(config.get('port'), () => {
+server.listen(config.get('port'), () => {
     log.info(new Date().toLocaleString() + '. Server listening on port ' + config.get('port'));
 });
