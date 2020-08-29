@@ -7,7 +7,7 @@ const config = require('./config');
 const server = express();
 
 server.engine('ejs', require('ejs-mate'));
-server.set('views', '/views');
+server.set('views', 'views');
 server.set('view engine', 'ejs');
 
 server.use(compression());
