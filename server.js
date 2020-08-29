@@ -21,7 +21,7 @@ server.use(serveStatic('public', {
 }));
 
 server.get('/', (req, res) => {
-    res.render('index', {
+    res.render('index.ejs', {
         data: {
             h1: 'Hello!',
         }
@@ -31,7 +31,7 @@ server.get('/', (req, res) => {
 server.use((req, res,) => {
     // log.error(`${new Date().toLocaleString()}. Error status: 404. URL: ${req.url}`);
 
-    res.status(404).render('errors/404', {
+    res.status(404).render('errors/404.ejs', {
         data: {
             url: req.url
         }
@@ -44,7 +44,7 @@ server.use((err, req, res, next) => {
 
     // log.error(`${new Date().toLocaleString()}. Error status: ${err.status || 500}. Message: ${err.message}. Stack: ${err.stack}`);
 
-    res.status(err.status || 500).render('errors/500', {err});
+    res.status(err.status || 500).render('errors/500.ejs', {err});
 });
 
 server.listen(config.get('port'), () => {
