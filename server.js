@@ -1,9 +1,8 @@
 const express = require('express');
 const compression = require('compression');
 const serveStatic = require('serve-static');
-const path = require('path');
 const config = require('./config');
-const log = require('./libs/winston')(module);
+// const log = require('./libs/winston')(module);
 
 const server = express();
 
@@ -30,7 +29,7 @@ server.get('/', (req, res) => {
 });
 
 server.use((req, res,) => {
-    log.error(`${new Date().toLocaleString()}. Error status: 404. URL: ${req.url}`);
+    // log.error(`${new Date().toLocaleString()}. Error status: 404. URL: ${req.url}`);
 
     res.status(404).render('errors/404', {
         data: {
@@ -43,11 +42,11 @@ server.use((err, req, res, next) => {
     if (res.headersSent)
         return next(err);
 
-    log.error(`${new Date().toLocaleString()}. Error status: ${err.status || 500}. Message: ${err.message}. Stack: ${err.stack}`);
+    // log.error(`${new Date().toLocaleString()}. Error status: ${err.status || 500}. Message: ${err.message}. Stack: ${err.stack}`);
 
     res.status(err.status || 500).render('errors/500', {err});
 });
 
 server.listen(config.get('port'), () => {
-    log.info(new Date().toLocaleString() + '. Server listening on port ' + config.get('port'));
+    // log.info(new Date().toLocaleString() + '. Server listening on port ' + config.get('port'));
 });
