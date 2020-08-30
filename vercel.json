@@ -9,16 +9,6 @@
     ],
     "routes": [
         {
-            "handle": "filesystem"
-        },
-        {
-            "src": "/",
-            "dest": "/server.js",
-            "methods": [
-                "GET"
-            ]
-        },
-        {
             "src": "/(.css)",
             "dest": "/server.js",
             "methods": [
@@ -33,6 +23,13 @@
                 "GET"
             ],
             "continue": true
+        },
+        {
+            "src": "/",
+            "dest": "/server.js",
+            "methods": [
+                "GET"
+            ]
         },
         {
             "src": "/(.*)",
