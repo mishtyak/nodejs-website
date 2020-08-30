@@ -23,6 +23,20 @@
             ]
         },
         {
+            "src": "/favicon.png",
+            "dest": "/server.js",
+            "methods": [
+                "GET"
+            ]
+        },
+        {
+            "src": "/manifest.webmanifest",
+            "dest": "/server.js",
+            "methods": [
+                "GET"
+            ]
+        },
+        {
             "src": "/img/(.*)",
             "dest": "/server.js",
             "methods": [
