@@ -9,7 +9,7 @@
     ],
     "routes": [
         {
-            "src": "/(.css)",
+            "src": "/.css",
             "dest": "/server.js",
             "methods": [
                 "GET"
