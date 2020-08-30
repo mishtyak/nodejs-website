@@ -19,6 +19,22 @@
             ]
         },
         {
+            "src": "/(.css)",
+            "dest": "/server.js",
+            "methods": [
+                "GET"
+            ],
+            "continue": true
+        },
+        {
+            "src": "/img/(.*)",
+            "dest": "/server.js",
+            "methods": [
+                "GET"
+            ],
+            "continue": true
+        },
+        {
             "src": "/(.*)",
             "status": 404,
             "dest": "/server.js",
