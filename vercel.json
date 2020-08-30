@@ -9,14 +9,14 @@
     ],
     "routes": [
         {
-            "src": "/*.css",
+            "src": "/(.css)",
             "dest": "/server.js",
             "methods": [
                 "GET"
             ]
         },
         {
-            "src": "/*.js",
+            "src": "/app.js",
             "dest": "/server.js",
             "methods": [
                 "GET"
