@@ -13,7 +13,7 @@ server.set('view engine', 'ejs');
 
 server.use(compression());
 
-server.use(serveStatic('public', {
+server.use(serveStatic(path.join(__dirname, 'public'), {
     maxAge: '1d',
     setHeaders(res, path) {
         if (serveStatic.mime.lookup(path) === 'text/html')
