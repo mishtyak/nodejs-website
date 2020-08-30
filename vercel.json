@@ -9,6 +9,10 @@
     ],
     "routes": [
         {
+            "handle": "filesystem",
+            "dest": "/server.js"
+        },
+        {
             "src": "/app.css",
             "dest": "/server.js",
             "methods": [
@@ -17,20 +21,6 @@
         },
         {
             "src": "/app.js",
-            "dest": "/server.js",
-            "methods": [
-                "GET"
-            ]
-        },
-        {
-            "src": "/favicon.png",
-            "dest": "/server.js",
-            "methods": [
-                "GET"
-            ]
-        },
-        {
-            "src": "/manifest.webmanifest",
             "dest": "/server.js",
             "methods": [
                 "GET"
