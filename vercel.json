@@ -13,16 +13,14 @@
             "dest": "/server.js",
             "methods": [
                 "GET"
-            ],
-            "continue": true
+            ]
         },
         {
             "src": "/img/(.*)",
             "dest": "/server.js",
             "methods": [
                 "GET"
-            ],
-            "continue": true
+            ]
         },
         {
             "src": "/",
