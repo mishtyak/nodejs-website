@@ -1,0 +1,30 @@
+{
+    "version": 2,
+    "scope": "nodejs-website",
+    "builds": [
+        {
+            "src": "server.js",
+            "use": "@vercel/node"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/",
+            "dest": "/server.js",
+            "methods": [
+                "GET"
+            ]
+        },
+        {
+            "handle": "filesystem"
+        },
+        {
+            "src": "/(.*)",
+            "status": 404,
+            "dest": "/server.js",
+            "methods": [
+                "GET"
+            ]
+        }
+    ]
+}
