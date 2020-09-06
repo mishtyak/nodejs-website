@@ -40,10 +40,10 @@ server.use((req, res,) => {
 });
 
 server.use((err, req, res, next) => {
+    // log.error(`${new Date().toLocaleString()}. Error status: ${err.status || 500}. Message: ${err.message}. Stack: ${err.stack}`);
+
     if (res.headersSent)
         return next(err);
-
-    // log.error(`${new Date().toLocaleString()}. Error status: ${err.status || 500}. Message: ${err.message}. Stack: ${err.stack}`);
 
     res.status(err.status || 500).render('errors/500', {err});
 });

@@ -1,25 +1,18 @@
 {
     "version": 2,
-    "scope": "nodejs-website",
     "builds": [
         {
             "src": "server.js",
             "use": "@vercel/node"
         }
     ],
+    "public": true,
     "routes": [
         {
             "handle": "filesystem"
         },
         {
-            "src": "/app.css",
-            "dest": "/server.js",
-            "methods": [
-                "GET"
-            ]
-        },
-        {
-            "src": "/app.js",
+            "src": "/dist/(.*)",
             "dest": "/server.js",
             "methods": [
                 "GET"

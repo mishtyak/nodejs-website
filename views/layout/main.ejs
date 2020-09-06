@@ -9,10 +9,10 @@
 
     <title>Nodejs website</title>
 
-    <link rel="stylesheet" href="/app.css">
+    <link rel="stylesheet" href="/dist/site/app.css">
     <%- block('styles') -%>
 
-    <script defer src="/app.js"></script>
+    <script defer src="/dist/site/app.js"></script>
     <%- block('scripts') %>
 
     <link rel="manifest" href="/manifest.webmanifest">
@@ -24,6 +24,10 @@
     <a href="/">
         <img class="logo" src="/img/pwa-logo.svg" alt="pwa logo" width="80" height="30">
     </a>
+
+    <nav class="page-menu">
+        <a class="page-menu__item" href="/#">Menu item</a>
+    </nav>
 </header>
 
 <main><%- body %></main>
