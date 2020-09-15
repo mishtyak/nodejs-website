@@ -1,0 +1,56 @@
+.product-card-box.js_product-card__box_hover(itemprop='itemListElement' itemscope itemtype='http://schema.org/ListItem')
+    meta(itemprop='position' content=index)
+
+    .product-card(itemscope itemtype='http://schema.org/Product')
+        a.product-card__img-link(href=product.url itemprop='url')
+            if product.images[0]
+                img.product-card__img(src=product.images[0].medium_image width=270 height=270 alt=product.product_name)
+
+        .product-card__tag-box
+            if product.is_product_of_day
+                span.product-card__tag.bg-danger Букет дня
+            if product.is_popular
+                span.product-card__tag.bg-warning Хит продаж
+            if product.is_new
+                span.product-card__tag.bg-danger Новинка
+            if product.discount
+                span.product-card__tag.bg-success Скидка
+
+        .product-card__btn-favorite
+            img(class='svg-heart d-block' src='/img/heart.svg' width=21 height=20 alt='')
+
+        div(class='product-card__seller-box')
+            if product.partner
+                a.product-card__seller(href=(product.partner.slug ? '/partner/' + product.partner.slug : '#'))
+                    if product.partner.avatar && product.partner.avatar.small_image
+                        img(class='product-card__seller-avatar' src=product.partner.avatar.small_image alt=product.partner.localized_partner_name)
+
+                    .product-card__seller-name= product.partner.localized_partner_name
+
+            div(class='product-card__cost-delivery')
+                img(class='product-card__cost-delivery-img' src='/img/delivery.svg' alt='')
+
+                div Бесплатно#{product.delivery_term ? ', ' + product.delivery_term : ''}
+
+        div(class='product-card__title-box')
+            a.product-card__title(href=product.url itemprop='name')= product.product_name
+
+            .product-card__price(itemtype='https://schema.org/Offer' itemprop='offers' itemscope='itemscope')
+                span(itemprop='price')= product.price_format
+
+                meta(itemprop='priceCurrency' content=product.currency)
+
+                if product.discount
+                    .product-card__price-old #{product.discount} ₽
+
+        if product.width || product.height
+            div(class='product-card__size collapse') #{product.width || ''} #{product.width && product.height ? 'х' : ''} #{product.height || ''} см
+
+        if product.items && product.items.length
+            div(class='product-card__descr collapse')
+                each item in product.items
+                    div #{item.name} #{item.refs_item_type_id === 1 ? '— ' + Math.round(item.count) : ''}
+
+        a(class='btn btn_block collapse' href='product.url') Заказать
+
+        button(type='button' class='product-card__btn-one-click collapse') Купить в 1 клие

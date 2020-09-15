@@ -1,0 +1,10 @@
+extends ../layout/main
+
+block main
+    section.container(itemtype='https://schema.org/ItemList' itemscope)
+        h1.text-center Доставка цветов по Москве и России
+
+        .grid
+            each product, index in products.data
+                .m-grid__item-1-2.grid__item-1-4
+                    include includes/product
