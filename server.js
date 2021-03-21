@@ -1,12 +1,10 @@
 const compression = require('compression');
 const config = require('./config');
-const express = require('express');
+const server = require('express')();
 const fs = require('fs');
 const log = require('./libs/winston')(module);
 const path = require('path');
 const serve_static = require('serve-static');
-
-const server = express();
 
 server.set('views', path.join(__dirname, 'views'));
 server.set('view engine', 'pug');
@@ -24,25 +22,66 @@ server.use(serve_static(path.join(__dirname, 'public'), {
 server.get('/', (req, res) => {
     res.render('index', {
         data: {
-            h1: 'Hello!',
+            h1: 'Hello!'
         }
     });
 });
 
-server.get('/flomarket', ((req, res, next) => {
-    fs.readFile('assets/json/products.json', 'utf8', ((err, data) => {
+server.get('/fm', ((req, res, next) => {
+    fs.readFile('assets/json/products.json', 'utf-8', ((err, data) => {
         if (err) {
             next();
             return;
         }
 
-        res.render('flomarket', {
+        res.render('fm', {
             products: JSON.parse(data)
         });
     }));
 }));
 
-server.use((req, res,) => {
+server.get('/fm/vue', ((req, res, next) => {
+    fs.readFile('assets/json/products.json', 'utf-8', ((err, data) => {
+        if (err) {
+            next();
+            return;
+        }
+
+        res.render('fm/vue', {
+            products: JSON.parse(data)
+        });
+    }));
+}));
+
+server.get('/fm/vue-components', ((req, res, next) => {
+    fs.readFile('assets/json/products.json', 'utf-8', ((err, data) => {
+        if (err) {
+            next();
+            return;
+        }
+
+        res.render('fm/vue-components', {
+            products: JSON.parse(data)
+        });
+    }));
+}));
+
+server.get('/fm/vue-ajax', ((req, res, next) => {
+    res.render('fm/vue-ajax');
+}));
+
+server.get('/api/products', ((req, res, next) => {
+    fs.readFile('assets/json/products.json', 'utf-8', ((err, data) => {
+        if (err) {
+            next();
+            return;
+        }
+
+        res.jsonp(JSON.parse(data));
+    }));
+}));
+
+server.use((req, res) => {
     log.error(`${new Date().toLocaleString()}. Error status: 404. URL: ${req.url}`);
 
     res.status(404).render('errors/404', {

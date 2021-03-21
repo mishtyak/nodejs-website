@@ -1,0 +1,19 @@
+.top-banner {
+    align-items: center;
+    background: #eaeaec 50%/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    height: calc(100vh - 58px);
+    max-height: 600px;
+}
+
+.top-banner__title {
+    color: #333;
+    font-size: 48px;
+    mix-blend-mode: multiply;
+    text-align: center;
+}
+
+.catalog-box {
+    padding: 4vh 0;
+}

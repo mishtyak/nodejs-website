@@ -152,16 +152,15 @@
 }
 
 @media (hover) {
-    .product-card:hover {
+    .product-card__box_hover .product-card {
         z-index: 5;
     }
 
-    .product-card__box_hover .product-card:before,
-    .product-card:hover:before {
+    .product-card__box_hover .product-card:before {
         box-shadow: 0 10px 50px rgba(68, 58, 63, .2);
     }
 
-    .product-card:hover .collapse {
+    .product-card__box_hover .product-card .collapse {
         display: block;
     }
 

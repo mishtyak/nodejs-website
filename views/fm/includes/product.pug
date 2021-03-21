@@ -1,10 +1,17 @@
+-
+    let number_format = currency => {
+        return {style: 'currency', currency, minimumFractionDigits: 0}
+    };
+
 .product-card-box.js_product-card__box_hover(itemprop='itemListElement' itemscope itemtype='http://schema.org/ListItem')
     meta(itemprop='position' content=index)
 
     .product-card(itemscope itemtype='http://schema.org/Product')
         a.product-card__img-link(href=product.url itemprop='url')
             if product.images[0]
-                img.product-card__img(src=product.images[0].medium_image width=270 height=270 alt=product.product_name)
+                img.product-card__img.js_img-lazy(src='/img/empty.gif' data-src=product.images[0].medium_image width=270 height=270 alt=product.product_name)
+            else
+                img.product-card__img(src='/img/empty.gif' width=270 height=270 alt='')
 
         .product-card__tag-box
             if product.is_product_of_day
@@ -17,18 +24,18 @@
                 span.product-card__tag.bg-success Скидка
 
         .product-card__btn-favorite
-            img(class='svg-heart d-block' src='/img/heart.svg' width=21 height=20 alt='')
+            img(class='svg-heart d-block js_img-lazy' src='/img/empty.gif' data-src='/img/heart.svg' width=21 height=20 alt='')
 
         div(class='product-card__seller-box')
             if product.partner
                 a.product-card__seller(href=(product.partner.slug ? '/partner/' + product.partner.slug : '#'))
                     if product.partner.avatar && product.partner.avatar.small_image
-                        img(class='product-card__seller-avatar' src=product.partner.avatar.small_image alt=product.partner.localized_partner_name)
+                        img(class='product-card__seller-avatar js_img-lazy' src='/img/empty.gif' data-src=product.partner.avatar.small_image width=40 height=40 alt=product.partner.localized_partner_name)
 
                     .product-card__seller-name= product.partner.localized_partner_name
 
             div(class='product-card__cost-delivery')
-                img(class='product-card__cost-delivery-img' src='/img/delivery.svg' alt='')
+                img(class='product-card__cost-delivery-img js_img-lazy' src='/img/empty.gif' data-src='/img/delivery.svg' width=13 height=9 alt='')
 
                 div Бесплатно#{product.delivery_term ? ', ' + product.delivery_term : ''}
 
@@ -36,12 +43,12 @@
             a.product-card__title(href=product.url itemprop='name')= product.product_name
 
             .product-card__price(itemtype='https://schema.org/Offer' itemprop='offers' itemscope='itemscope')
-                span(itemprop='price')= product.price_format
+                span(itemprop='price')= product.price.toLocaleString('ru', number_format(product.currency))
 
                 meta(itemprop='priceCurrency' content=product.currency)
 
                 if product.discount
-                    .product-card__price-old #{product.discount} ₽
+                    .product-card__price-old= product.full_price.toLocaleString('ru', number_format(product.currency))
 
         if product.width || product.height
             div(class='product-card__size collapse') #{product.width || ''} #{product.width && product.height ? 'х' : ''} #{product.height || ''} см

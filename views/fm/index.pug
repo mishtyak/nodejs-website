@@ -1,0 +1,22 @@
+extends ../layout/main
+
+block main
+    section(class='top-banner js_img-lazy' data-bg='url(/img/autumn.jpg)')
+        .top-banner__title Заголовок баннера
+
+    section#js_app-product-list.container.catalog-box(itemtype='https://schema.org/ItemList' itemscope)
+        h1.text-center Доставка цветов по Москве и России
+
+        if products.data.length
+            .grid
+                each product, index in products.data
+                    .m-grid__item-1-2.grid__item-1-4
+                        include includes/product
+        else
+            div(class='text-center') Товаров не найлено
+
+block styles
+    link(rel='stylesheet' href='/dist/site/fm/fm.css')
+
+block scripts
+    script(defer src='/dist/site/fm/fm-native.js')

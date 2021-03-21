@@ -1,5 +1,5 @@
-@import './mixins/css/grid';
-@import './site/mixins/css/product-card';
+@import '../mixins/css/grid';
+@import '../mixins/css/product-card';
 
 html {
     box-sizing: border-box;
@@ -48,7 +48,8 @@ body {
     flex-wrap: wrap;
 }
 
-.collapse {
+[v-cloak],
+.collapse:not(.collapse_reversal) {
     display: none;
 }
 
@@ -112,7 +113,6 @@ img {
 }
 
 .btn_block {
-    display: flex;
     width: 100%;
 }
 
@@ -131,6 +131,10 @@ img {
 
 .page-menu {
     margin-left: auto;
+}
+
+.page-menu__item {
+    padding: 10px;
 }
 
 // /
