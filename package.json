@@ -10,7 +10,7 @@
         "laravel-mix": "^5.0.5",
         "mongodb": "^3.6.0",
         "mongoose": "^5.10.2",
-        "nconf": "^0.10.0",
+        "nconf": "^0.11.4",
         "nodemon": "^1.18.10",
         "resolve-url-loader": "^3.1.0",
         "sass": "^1.26.10",
